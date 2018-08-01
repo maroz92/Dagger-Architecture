@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_content.*
-import pl.mrozok.daggerarchitecture.Logger
+import pl.mrozok.daggerarchitecture.common.Logger
 import pl.mrozok.daggerarchitecture.R
 
 class AwesomeFragment : Fragment() {

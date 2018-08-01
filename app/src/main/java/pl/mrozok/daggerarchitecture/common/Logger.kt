@@ -1,4 +1,4 @@
-package pl.mrozok.daggerarchitecture
+package pl.mrozok.daggerarchitecture.common
 
 import android.util.Log
 

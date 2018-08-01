@@ -5,17 +5,29 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_random.*
-import pl.mrozok.daggerarchitecture.Logger
 import pl.mrozok.daggerarchitecture.R
+import pl.mrozok.daggerarchitecture.common.Logger
+import pl.mrozok.daggerarchitecture.common.MyApplication
+import pl.mrozok.daggerarchitecture.injection.common.ActivityModule
+import pl.mrozok.daggerarchitecture.injection.host.DaggerHostComponent
+import pl.mrozok.daggerarchitecture.injection.random.DaggerRandomComponent
+import javax.inject.Inject
 
 class RandomActivity : AppCompatActivity() {
 
-    private val logger = Logger()
-    private lateinit var content: RandomContent
-    private val navigator = RandomNavigator(this, supportFragmentManager)
+    @Inject
+    lateinit var logger: Logger
+    @Inject
+    lateinit var content: RandomContent
+    @Inject
+    lateinit var navigator: RandomNavigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        DaggerRandomComponent.builder()
+                .appComponent(getMyApplication().appComponent)
+                .build()
+                .inject(this)
         setContentView(R.layout.activity_random)
 
         content = RandomContent()
@@ -39,4 +51,6 @@ class RandomActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    private fun getMyApplication(): MyApplication = application as MyApplication
 }

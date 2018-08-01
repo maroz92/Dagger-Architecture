@@ -4,16 +4,27 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import pl.mrozok.daggerarchitecture.Logger
 import pl.mrozok.daggerarchitecture.R
+import pl.mrozok.daggerarchitecture.common.Logger
+import pl.mrozok.daggerarchitecture.common.MyApplication
+import pl.mrozok.daggerarchitecture.injection.common.ActivityModule
+import pl.mrozok.daggerarchitecture.injection.host.DaggerHostComponent
+import javax.inject.Inject
 
 class HostActivity : AppCompatActivity() {
 
-    private val logger = Logger()
-    private val navigator = HostNavigator(this, supportFragmentManager)
+    @Inject
+    lateinit var logger: Logger
+    @Inject
+    lateinit var navigator: HostNavigator
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        DaggerHostComponent.builder()
+                .appComponent(getMyApplication().appComponent)
+                .activityModule(ActivityModule(this))
+                .build()
+                .inject(this)
         setContentView(R.layout.activity_host)
 
         navigator.openAwesomeFragment()
@@ -31,4 +42,6 @@ class HostActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    private fun getMyApplication(): MyApplication = application as MyApplication
 }
