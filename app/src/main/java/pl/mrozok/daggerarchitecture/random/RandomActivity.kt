@@ -8,8 +8,6 @@ import kotlinx.android.synthetic.main.activity_random.*
 import pl.mrozok.daggerarchitecture.R
 import pl.mrozok.daggerarchitecture.common.Logger
 import pl.mrozok.daggerarchitecture.common.MyApplication
-import pl.mrozok.daggerarchitecture.injection.common.ActivityModule
-import pl.mrozok.daggerarchitecture.injection.host.DaggerHostComponent
 import pl.mrozok.daggerarchitecture.injection.random.DaggerRandomComponent
 import javax.inject.Inject
 

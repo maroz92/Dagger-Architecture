@@ -6,13 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.synthetic.main.fragment_content.*
-import pl.mrozok.daggerarchitecture.common.Logger
 import pl.mrozok.daggerarchitecture.R
+import pl.mrozok.daggerarchitecture.common.Logger
+import javax.inject.Inject
 
 class NotSoAwesomeFragment : Fragment() {
 
-    private val logger = Logger()
-    private lateinit var navigator: HostNavigator
+    @Inject
+    lateinit var logger: Logger
+    @Inject
+    lateinit var navigator: HostNavigator
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,

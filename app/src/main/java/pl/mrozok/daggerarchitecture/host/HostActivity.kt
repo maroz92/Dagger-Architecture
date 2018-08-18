@@ -9,6 +9,7 @@ import pl.mrozok.daggerarchitecture.common.Logger
 import pl.mrozok.daggerarchitecture.common.MyApplication
 import pl.mrozok.daggerarchitecture.injection.common.ActivityModule
 import pl.mrozok.daggerarchitecture.injection.host.DaggerHostComponent
+import pl.mrozok.daggerarchitecture.injection.host.HostComponent
 import javax.inject.Inject
 
 class HostActivity : AppCompatActivity() {
@@ -18,13 +19,15 @@ class HostActivity : AppCompatActivity() {
     @Inject
     lateinit var navigator: HostNavigator
 
+    lateinit var hostComponent: HostComponent
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        DaggerHostComponent.builder()
+        hostComponent = DaggerHostComponent.builder()
                 .appComponent(getMyApplication().appComponent)
                 .activityModule(ActivityModule(this))
                 .build()
-                .inject(this)
+        hostComponent.inject(this)
         setContentView(R.layout.activity_host)
 
         navigator.openAwesomeFragment()
