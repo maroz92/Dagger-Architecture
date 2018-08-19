@@ -22,7 +22,7 @@ class AwesomeFragment : Fragment() {
         getHostComponent().inject(this)
     }
 
-    private fun getHostComponent() = (activity as HostActivity).hostComponent
+    private fun getHostComponent() = (activity as HostActivity).hostSubcomponent
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,

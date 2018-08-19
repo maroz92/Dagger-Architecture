@@ -9,7 +9,6 @@ import pl.mrozok.daggerarchitecture.R
 import pl.mrozok.daggerarchitecture.common.Logger
 import pl.mrozok.daggerarchitecture.common.MyApplication
 import pl.mrozok.daggerarchitecture.injection.common.ActivityModule
-import pl.mrozok.daggerarchitecture.injection.random.DaggerRandomComponent
 import javax.inject.Inject
 
 class RandomActivity : AppCompatActivity() {
@@ -23,8 +22,8 @@ class RandomActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        DaggerRandomComponent.builder()
-                .appComponent(getMyApplication().appComponent)
+        getMyApplication().appComponent
+                .randomSubcomponent()
                 .activityModule(ActivityModule(this))
                 .build()
                 .inject(this)
