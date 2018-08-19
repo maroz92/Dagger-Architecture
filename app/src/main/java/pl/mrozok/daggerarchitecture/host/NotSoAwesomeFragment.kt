@@ -17,6 +17,13 @@ class NotSoAwesomeFragment : Fragment() {
     @Inject
     lateinit var navigator: HostNavigator
 
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        getHostComponent().inject(this)
+    }
+
+    private fun getHostComponent() = (activity as HostActivity).hostComponent
+
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
                               savedInstanceState: Bundle?): View? =
@@ -24,7 +31,6 @@ class NotSoAwesomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navigator = HostNavigator(activity!!, activity!!.supportFragmentManager)
         fragment_button.setText(R.string.good_day)
         fragment_button.setOnClickListener { onChangeFragmentClick() }
         fragment_emoji.setText(R.string.sad)

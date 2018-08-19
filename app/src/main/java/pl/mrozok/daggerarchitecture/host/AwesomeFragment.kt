@@ -31,7 +31,6 @@ class AwesomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        navigator = HostNavigator(activity!!, activity!!.supportFragmentManager)
         fragment_button.setText(R.string.bad_day)
         fragment_button.setOnClickListener { onChangeFragmentClick() }
         fragment_emoji.setText(R.string.smile)
