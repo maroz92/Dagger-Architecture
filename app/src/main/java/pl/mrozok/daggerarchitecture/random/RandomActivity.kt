@@ -34,6 +34,7 @@ class RandomActivity : AppCompatActivity() {
     }
 
     private fun onRandomClick() {
+        logger.log("Random", "openRandomFragment")
         navigator.openRandomFragment(content.getRandomEmoji())
     }
 
@@ -44,6 +45,7 @@ class RandomActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (R.id.menuSwitchActivity == item.itemId) {
+            logger.log("Random", "openHostActivity")
             navigator.openHostActivity()
             return true
         }
