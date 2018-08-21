@@ -28,6 +28,7 @@ class NotSoAwesomeFragment : Fragment() {
     }
 
     private fun onChangeFragmentClick() {
+        logger.log("Host", "openAwesomeFragment")
         navigator.openAwesomeFragment()
     }
 }
