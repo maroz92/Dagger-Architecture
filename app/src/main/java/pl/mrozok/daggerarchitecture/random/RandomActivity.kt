@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_random.*
-import pl.mrozok.daggerarchitecture.Logger
+import pl.mrozok.daggerarchitecture.common.Logger
 import pl.mrozok.daggerarchitecture.R
 
 class RandomActivity : AppCompatActivity() {

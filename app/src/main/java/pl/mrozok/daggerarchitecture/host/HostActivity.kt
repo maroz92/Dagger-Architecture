@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import pl.mrozok.daggerarchitecture.Logger
+import pl.mrozok.daggerarchitecture.common.Logger
 import pl.mrozok.daggerarchitecture.R
 
 class HostActivity : AppCompatActivity() {
