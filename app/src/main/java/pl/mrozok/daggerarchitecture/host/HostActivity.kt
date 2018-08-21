@@ -40,6 +40,7 @@ class HostActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (R.id.menuSwitchActivity == item.itemId) {
+            logger.log("Host", "openRandomActivity")
             navigator.openRandomActivity()
             return true
         }
