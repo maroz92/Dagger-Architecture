@@ -4,6 +4,7 @@ import android.app.Activity
 import android.support.v4.app.FragmentManager
 import dagger.Module
 import dagger.Provides
+import pl.mrozok.daggerarchitecture.random.RandomContent
 import pl.mrozok.daggerarchitecture.random.RandomNavigator
 
 @Module
@@ -14,4 +15,8 @@ class RandomModule {
                                fragmentManager: FragmentManager): RandomNavigator =
             RandomNavigator(activity,
                     fragmentManager)
+
+    @Provides
+    fun provideRandomContent(): RandomContent =
+            RandomContent()
 }

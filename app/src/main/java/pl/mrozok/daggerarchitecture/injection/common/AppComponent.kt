@@ -6,7 +6,7 @@ import pl.mrozok.daggerarchitecture.injection.random.RandomSubcomponent
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [UtilModule::class, DataModule::class])
+@Component(modules = [UtilModule::class])
 interface AppComponent {
 
     fun hostSubcomponent(): HostSubcomponent.Builder
