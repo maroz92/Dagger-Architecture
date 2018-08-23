@@ -8,7 +8,7 @@ import pl.mrozok.daggerarchitecture.R
 import pl.mrozok.daggerarchitecture.common.Logger
 import pl.mrozok.daggerarchitecture.common.MyApplication
 import pl.mrozok.daggerarchitecture.injection.common.ActivityModule
-import pl.mrozok.daggerarchitecture.injection.host.HostSubcomponent
+import pl.mrozok.daggerarchitecture.injection.mood.MoodSubcomponent
 import javax.inject.Inject
 
 class MoodActivity : AppCompatActivity() {

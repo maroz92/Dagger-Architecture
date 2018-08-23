@@ -1,7 +1,7 @@
 package pl.mrozok.daggerarchitecture.injection.common
 
 import dagger.Component
-import pl.mrozok.daggerarchitecture.injection.host.HostSubcomponent
+import pl.mrozok.daggerarchitecture.injection.mood.MoodSubcomponent
 import pl.mrozok.daggerarchitecture.injection.random.RandomSubcomponent
 import javax.inject.Singleton
 
@@ -9,6 +9,6 @@ import javax.inject.Singleton
 @Component(modules = [UtilModule::class])
 interface AppComponent {
 
-    fun hostSubcomponent(): HostSubcomponent.Builder
+    fun moodSubcomponent(): MoodSubcomponent.Builder
     fun randomSubcomponent(): RandomSubcomponent.Builder
 }
