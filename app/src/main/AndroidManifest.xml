@@ -10,14 +10,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".host.HostActivity">
+        <activity
+            android:name=".mood.MoodActivity"
+            android:label="@string/label_mood">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".random.RandomActivity"></activity>
+
+        <activity
+            android:name=".random.RandomActivity"
+            android:label="@string/label_random" />
     </application>
 
 </manifest>

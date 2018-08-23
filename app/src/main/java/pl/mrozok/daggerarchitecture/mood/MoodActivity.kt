@@ -1,4 +1,4 @@
-package pl.mrozok.daggerarchitecture.host
+package pl.mrozok.daggerarchitecture.mood
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -11,25 +11,28 @@ import pl.mrozok.daggerarchitecture.injection.common.ActivityModule
 import pl.mrozok.daggerarchitecture.injection.host.HostSubcomponent
 import javax.inject.Inject
 
-class HostActivity : AppCompatActivity() {
+class MoodActivity : AppCompatActivity() {
 
     @Inject
     lateinit var logger: Logger
     @Inject
-    lateinit var navigator: HostNavigator
+    lateinit var navigator: MoodNavigator
 
-    lateinit var hostSubcomponent: HostSubcomponent
+    lateinit var moodSubcomponent: MoodSubcomponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        hostSubcomponent = getMyApplication().appComponent.hostSubcomponent()
+        setContentView(R.layout.activity_mood)
+        moodSubcomponent = getMyApplication().appComponent.moodSubcomponent()
                 .activityModule(ActivityModule(this))
                 .build()
-        hostSubcomponent.inject(this)
-        setContentView(R.layout.activity_host)
+        moodSubcomponent.inject(this)
+        setContentView(R.layout.activity_mood)
 
-        navigator.openAwesomeFragment()
+        navigator.openHappyFragment()
     }
+
+    private fun getMyApplication(): MyApplication = application as MyApplication
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu, menu)
@@ -38,12 +41,10 @@ class HostActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (R.id.menuSwitchActivity == item.itemId) {
-            logger.log("Host", "openRandomActivity")
+            logger.log("Mood", "openRandomActivity")
             navigator.openRandomActivity()
             return true
         }
         return super.onOptionsItemSelected(item)
     }
-
-    private fun getMyApplication(): MyApplication = application as MyApplication
 }

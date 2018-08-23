@@ -1,4 +1,4 @@
-package pl.mrozok.daggerarchitecture.host
+package pl.mrozok.daggerarchitecture.mood
 
 import android.app.Activity
 import android.content.Intent
@@ -7,20 +7,20 @@ import android.support.v4.app.FragmentManager
 import pl.mrozok.daggerarchitecture.R
 import pl.mrozok.daggerarchitecture.random.RandomActivity
 
-class HostNavigator(private val activity: Activity,
+class MoodNavigator(private val activity: Activity,
                     private val fragmentManager: FragmentManager) {
 
-    fun openAwesomeFragment() {
-        changeFragment(AwesomeFragment())
+    fun openHappyFragment() {
+        changeFragment(HappyFragment())
     }
 
-    fun openNotSoAwesomeFragment() {
-        changeFragment(NotSoAwesomeFragment())
+    fun openSadFragment() {
+        changeFragment(SadFragment())
     }
 
     private fun changeFragment(fragment: Fragment) {
         fragmentManager.beginTransaction()
-                .replace(R.id.host_content_container, fragment)
+                .replace(R.id.mood_content_container, fragment)
                 .commit()
     }
 
