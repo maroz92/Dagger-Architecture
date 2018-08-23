@@ -1,4 +1,4 @@
-package pl.mrozok.daggerarchitecture.host
+package pl.mrozok.daggerarchitecture.mood
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -10,19 +10,19 @@ import pl.mrozok.daggerarchitecture.R
 import pl.mrozok.daggerarchitecture.common.Logger
 import javax.inject.Inject
 
-class NotSoAwesomeFragment : Fragment() {
+class HappyFragment : Fragment() {
 
     @Inject
     lateinit var logger: Logger
     @Inject
-    lateinit var navigator: HostNavigator
+    lateinit var navigator: MoodNavigator
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        getHostComponent().inject(this)
+        getMoodComponent().inject(this)
     }
 
-    private fun getHostComponent() = (activity as HostActivity).hostComponent
+    private fun getMoodComponent() = (activity as MoodActivity).moodComponent
 
     override fun onCreateView(inflater: LayoutInflater,
                               container: ViewGroup?,
@@ -31,13 +31,13 @@ class NotSoAwesomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fragment_button.setText(R.string.good_day)
+        fragment_button.setText(R.string.bad_day)
         fragment_button.setOnClickListener { onChangeFragmentClick() }
-        fragment_emoji.setText(R.string.sad)
+        fragment_emoji.setText(R.string.smile)
     }
 
     private fun onChangeFragmentClick() {
-        logger.log("Host", "openAwesomeFragment")
-        navigator.openAwesomeFragment()
+        logger.log("Mood", "openSadFragment")
+        navigator.openSadFragment()
     }
 }

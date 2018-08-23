@@ -1,4 +1,4 @@
-package pl.mrozok.daggerarchitecture.host
+package pl.mrozok.daggerarchitecture.mood
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -8,29 +8,29 @@ import pl.mrozok.daggerarchitecture.R
 import pl.mrozok.daggerarchitecture.common.Logger
 import pl.mrozok.daggerarchitecture.common.MyApplication
 import pl.mrozok.daggerarchitecture.injection.common.ActivityModule
-import pl.mrozok.daggerarchitecture.injection.host.DaggerHostComponent
-import pl.mrozok.daggerarchitecture.injection.host.HostComponent
+import pl.mrozok.daggerarchitecture.injection.mood.DaggerMoodComponent
+import pl.mrozok.daggerarchitecture.injection.mood.MoodComponent
 import javax.inject.Inject
 
-class HostActivity : AppCompatActivity() {
+class MoodActivity : AppCompatActivity() {
 
     @Inject
     lateinit var logger: Logger
     @Inject
-    lateinit var navigator: HostNavigator
+    lateinit var navigator: MoodNavigator
 
-    lateinit var hostComponent: HostComponent
+    lateinit var moodComponent: MoodComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        hostComponent = DaggerHostComponent.builder()
+        moodComponent = DaggerMoodComponent.builder()
                 .appComponent(getMyApplication().appComponent)
                 .activityModule(ActivityModule(this))
                 .build()
-        hostComponent.inject(this)
-        setContentView(R.layout.activity_host)
+        moodComponent.inject(this)
+        setContentView(R.layout.activity_mood)
 
-        navigator.openAwesomeFragment()
+        navigator.openHappyFragment()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -40,7 +40,7 @@ class HostActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (R.id.menuSwitchActivity == item.itemId) {
-            logger.log("Host", "openRandomActivity")
+            logger.log("Mood", "openRandomActivity")
             navigator.openRandomActivity()
             return true
         }

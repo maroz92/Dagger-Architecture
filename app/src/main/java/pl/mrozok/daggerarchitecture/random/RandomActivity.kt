@@ -46,8 +46,8 @@ class RandomActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (R.id.menuSwitchActivity == item.itemId) {
-            logger.log("Random", "openHostActivity")
-            navigator.openHostActivity()
+            logger.log("Random", "openMoodActivity")
+            navigator.openMoodActivity()
             return true
         }
         return super.onOptionsItemSelected(item)

@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Dagger Architecture</string>
+    <string name="label_mood">Mood Activity</string>
+    <string name="label_random">Random Activity</string>
 
     <string name="menu_switch_activity">Switch Activity</string>
 
