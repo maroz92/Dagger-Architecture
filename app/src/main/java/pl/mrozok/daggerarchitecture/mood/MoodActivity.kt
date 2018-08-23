@@ -1,4 +1,4 @@
-package pl.mrozok.daggerarchitecture.host
+package pl.mrozok.daggerarchitecture.mood
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -7,16 +7,16 @@ import android.view.MenuItem
 import pl.mrozok.daggerarchitecture.common.Logger
 import pl.mrozok.daggerarchitecture.R
 
-class HostActivity : AppCompatActivity() {
+class MoodActivity : AppCompatActivity() {
 
     private val logger = Logger()
-    private val navigator = HostNavigator(this, supportFragmentManager)
+    private val navigator = MoodNavigator(this, supportFragmentManager)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_host)
+        setContentView(R.layout.activity_mood)
 
-        navigator.openAwesomeFragment()
+        navigator.openHappyFragment()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -26,7 +26,7 @@ class HostActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (R.id.menuSwitchActivity == item.itemId) {
-            logger.log("Host", "openRandomActivity")
+            logger.log("Mood", "openRandomActivity")
             navigator.openRandomActivity()
             return true
         }
